@@ -74,6 +74,8 @@ f)  The `DESCRIPTION` file of your package should be properly formatted
 a)  Briefly describe in one - two sentences what your R package does and
     why you decided to choose this functionality. This is just intended
     to give us some context to better understand the package.
+    
+    My R Package is a fun package aimed at students going on an exchange by providing them with the possibility to create interactive maps of the places they will be going to. I chose to do this, since I am currently on exchange myself (in Cape Town, South Africa) and I thought this might be useful to me and my fellow international students here.
 
 b)  To make installation easier, your R package should be in a public
     repository on GitHub. Provide the URL to the GitHub repository
@@ -92,7 +94,6 @@ remotes::install_github("<YOUR_GH_USERNAME>/<PACKAGE_REPOSITORY_NAME>")
 
 ```{r}
 library(tidyverse)
-library(easystats)
 library(devtools)
 library(usethis)
 library(osmdata)
@@ -179,7 +180,7 @@ load_all()
 ```
 
 ```{r}
-semabroadessential("cape town")
+semabroadessential("Boston")
 ```
 
 ```{r}
@@ -187,7 +188,7 @@ semabroadhelp()
 ```
 
 ```{r}
-semabroadmap("cape town", "tourism", "attraction")
+semabroadmap("Budapest", "amenity", "ice_cream")
 ```
 
 ```{r}
@@ -197,4 +198,3 @@ document()
 ```{r}
 ?semabroadessential()
 ```
-

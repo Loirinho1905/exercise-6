@@ -1,10 +1,10 @@
-Package: exercise6
+Package: semesterabroad
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person(Philipp, von Praun, , "Ph.Praun@campus.lmu.de", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Special package for students going abroad who want to obtain some information about the location of places of interest in the city they'll be studying in beforehand. Works with OpenStreetMap to achieve this.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8

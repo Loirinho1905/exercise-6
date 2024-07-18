@@ -91,15 +91,110 @@ remotes::install_github("<YOUR_GH_USERNAME>/<PACKAGE_REPOSITORY_NAME>")
 ```
 
 ```{r}
+library(tidyverse)
+library(easystats)
 library(devtools)
 library(usethis)
+library(osmdata)
+library(tmap)
+library(sf)
 ```
 
 ```{r}
-create_package("Statistik/Stats/SoSe24/R/exercise6")
+create_package("Desktop/Statistik/Stats/SoSe24/R")
 ```
 
 ```{r}
-use_git()
+semabroadessential <- function (city) {
+
+  query1 <- opq(bb = city) %>%
+    add_osm_feature(key = "amenity",
+                    value = "university") %>%
+    osmdata_sf()
+
+  query2 <- opq(bb = city) %>%
+    add_osm_feature(key = "amenity",
+                    value = "library") %>%
+    osmdata_sf()
+
+  query3 <- opq(bb = city) %>%
+    add_osm_feature(key = "amenity",
+                    value = "nightclub") %>%
+    osmdata_sf()
+
+  essential1 <- query1$osm_points %>% mutate(semester_abroad_essentials = "university building")
+
+  essential2 <- query2$osm_points %>% mutate(semester_abroad_essentials = "library")
+
+  essential3 <- query3$osm_points %>% mutate(semester_abroad_essentials = "nightclub")
+
+  essentials <- essential1 %>% bind_rows(essential2) %>% bind_rows(essential3)
+
+  tmap_mode(mode = "view")
+
+  essentials %>%
+    tm_shape() +
+    tm_dots(col = "semester_abroad_essentials")
+
+}
+```
+
+```{r}
+semabroadhelp <- function () {
+
+  help <- c(
+    "aerialway: station",
+    "aeroway: aerodrome, terminal",
+    "amenity: bar, biergarten, cafe, fast_food, food_court, ice_cream, pub, restaurant, dancing_school, university, language_school, library, surf_school, bicycle_rental, car_rental, atm, bank, hospital, dentist, pharmacy, cinema, nightclub, theatre, marketplace",
+    "building: hotel, commercial, kiosk, supermarket, religious, museum, castle, pagoda",
+    "historic: archaeological_site, memorial, church",
+    "leisure: bathing_place, dance, fitness_centre",
+    "shop: alcohol, bakery, butcher, cheese, chocolate, convenience, seafood, wine, boutique, shoes, second_hand, cosmetics, tattoo, furniture, kitchen, electronics, books, laundry",
+    "tourism: attraction, gallery, viewpoint"
+  )
+
+  print("Places of interest for students abroad may include:")
+  print(help)
+}
+```
+
+```{r}
+semabroadmap <- function(city, category, feature) {
+
+  query <- opq(bbox = city) %>%
+    add_osm_feature(key = category,
+                    value = feature) %>%
+    osmdata_sf()
+
+  tmap_mode(mode = "view")
+
+  query$osm_points %>%
+    tm_shape() +
+      tm_dots(col = "blue3")
+}
+```
+
+```{r}
+load_all()
+```
+
+```{r}
+semabroadessential("cape town")
+```
+
+```{r}
+semabroadhelp()
+```
+
+```{r}
+semabroadmap("cape town", "tourism", "attraction")
+```
+
+```{r}
+document()
+```
+
+```{r}
+?filter()
 ```
 

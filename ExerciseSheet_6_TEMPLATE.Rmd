@@ -81,7 +81,7 @@ b)  To make installation easier, your R package should be in a public
     repository on GitHub. Provide the URL to the GitHub repository
     below:
 
-e.g. `https://github.com/<YOUR_GH_USERNAME>/<PACKAGE_REPOSITORY_NAME>`
+e.g. `https://github.com/Loirinho1905/exercise-6`
 
 c)  Your R package should be installable via
     `remotes::install_github()`. Before submitting your solution to this
@@ -89,7 +89,7 @@ c)  Your R package should be installable via
     from GitHub. Provide the command below:
 
 ``` r
-remotes::install_github("<YOUR_GH_USERNAME>/<PACKAGE_REPOSITORY_NAME>")
+remotes::install_github("Loirinho1905/exercise-6")
 ```
 
 ```{r}
@@ -198,3 +198,8 @@ document()
 ```{r}
 ?semabroadessential()
 ```
+
+```{r}
+remotes::install_github("Loirinho1905/exercise-6")
+```
+
